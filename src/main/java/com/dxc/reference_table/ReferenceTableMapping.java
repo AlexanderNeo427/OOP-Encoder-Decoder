@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class ReferenceTableMapping {
     /**
-     * Main a 2-way mapping. More memory, but very fast lookup....
+     * Maintain a 2-way mapping. More memory, but very fast lookup....
      * - Need to find what is the index of char 'ch'? indexToChar( ch )
      * - Need to find what is the char at index 'i'?  charToIndex( i )
      *
@@ -29,16 +29,16 @@ public class ReferenceTableMapping {
         indexToChar.put(index, ch);
     }
 
-    public int getIndexOfChar(char ch) {
+    public Integer getIndexOfChar(char ch) {
         if (!charToIndex.containsKey(ch)) {
-            throw new RuntimeException("Character '" + ch + "' not found in the reference table.");
+            return null;
         }
         return charToIndex.get(ch);
     }
 
-    public char getCharAtIndex(int index) {
+    public Character getCharAtIndex(int index) {
         if (!indexToChar.containsKey(index)) {
-            throw new RuntimeException("Index '" + index + "' not found in the reference table.");
+            return null;
         }
         return indexToChar.get(index);
     }

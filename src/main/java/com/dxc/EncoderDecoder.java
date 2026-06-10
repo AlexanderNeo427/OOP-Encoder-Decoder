@@ -20,7 +20,7 @@ public class EncoderDecoder {
     private String encodeOrDecode(String text, boolean encode) {
         var result = new StringBuilder();
 
-        int offset = referenceTable.getOffset(text.charAt(0));
+        int shiftAmount = referenceTable.getIndexOfChar(text.charAt(0));
         for  (int i = 0; i < text.length(); i++) {
             if (i == 0) {
                 continue;
@@ -32,7 +32,7 @@ public class EncoderDecoder {
                 continue;
             }
 
-            char encodedOrDecoded = referenceTable.offsetCharLeftBy(ch, encode ? offset : -offset);
+            char encodedOrDecoded = referenceTable.shiftCharLeftByAmount(ch, encode ? shiftAmount : -shiftAmount);
             result.append(encodedOrDecoded);
         }
 
